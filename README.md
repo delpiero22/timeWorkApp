@@ -1,5 +1,17 @@
 # timeWorkApp
 time work app for RAOT develop by ionic2
 
-////to start project///
+## Pre install
+```
+npm install -g ionic@beta cordova
+```
+
+## Install
+```
 npm install
+```
+
+## Development
+```
+ionic serv
+```
