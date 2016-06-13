@@ -1,0 +1,14 @@
+<ion-navbar *navbar>
+  <ion-title>
+    Blank Starter
+  </ion-title>
+</ion-navbar>
+
+<ion-content class="home">
+  <h1 text-center>Content goes here</h1>
+  <ion-list>
+    <ion-item *ngFor="let item of values">
+      {{item.id}} {{item.title}}
+    </ion-item>
+  </ion-list>
+</ion-content>
