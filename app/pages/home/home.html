@@ -7,7 +7,7 @@
 <ion-content class="home">
   <h1 text-center>Content goes here</h1>
   <ion-list>
-    <ion-item *ngFor="let item of values">
+    <ion-item *ngFor="let item of values" (click)="onSelect(item)" >
       {{item.id}} {{item.title}}
     </ion-item>
   </ion-list>
