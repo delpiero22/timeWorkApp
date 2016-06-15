@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "Mahesh",
+        "profession": "Teacher"
+    },
+    {
+        "id": 2,
+        "name": "Adam",
+        "profession": "Student"
+    },
+    {
+        "id": 3,
+        "name": "John",
+        "profession": "Student"
+    },
+    {
+        "id": 4,
+        "name": "Alex",
+        "profession": "Student"
+    }
+]

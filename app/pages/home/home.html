@@ -1,14 +1,59 @@
 <ion-navbar *navbar>
-  <ion-title>
-    Blank Starter
+  <ion-title text-center light>
+    Home
   </ion-title>
 </ion-navbar>
-
 <ion-content class="home">
-  <h1 text-center>Content goes here</h1>
-  <ion-list>
-    <ion-item *ngFor="let item of values">
-      {{item.id}} {{item.title}}
+  <h1 text-center light>Check Time</h1>
+  <ion-card>
+
+    <ion-item>
+      <ion-label>ID</ion-label>
+      <ion-input type="text" placeholder="1111" [(ngModel)]="id"></ion-input>
     </ion-item>
-  </ion-list>
+
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" placeholder="01012550" [(ngModel)]="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>day</ion-label>
+      <ion-input type="text" placeholder="8" [(ngModel)]="day"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>month</ion-label>
+      <ion-input type="text" placeholder="6" [(ngModel)]="month"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>year</ion-label>
+      <ion-input type="text" placeholder="2559" [(ngModel)]="year"></ion-input>
+    </ion-item>
+
+    <ion-list>
+
+      <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate">
+        </ion-datetime>
+      </ion-item>
+    </ion-list>
+    <button block padding (click)="makePost()">check time</button>
+    <ion-card *ngFor="let item of values" (click)="onClick(item)">
+      <ion-item>รหัสพนักงาน
+        <p>{{item.id}}</p>
+      </ion-item>
+      <ion-item>วันที่ทำการ
+        <p>{{item.date}}</p>
+      </ion-item>
+      
+      <ion-item>เวลาสแกน
+        <p>{{item.time}}</p>
+      </ion-item>
+      <ion-item>จุดสแกน
+        <p>{{item.location}}</p>
+      </ion-item>
+    </ion-card>
+
+  </ion-card>
+
 </ion-content>
