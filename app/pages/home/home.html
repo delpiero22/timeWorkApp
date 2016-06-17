@@ -1,50 +1,43 @@
-
 <ion-content class="home">
-<<<<<<< HEAD
+
   <h1 text-center light>Time Work</h1>
-  <ion-card>
 
-    <ion-item>
-      <ion-label fixed>EmpID</ion-label>
-      <ion-input type="text" placeholder="1111" [(ngModel)]="id"></ion-input>
-    </ion-item>
 
-    <ion-item>
-      <ion-label fixed>Password</ion-label>
-      <ion-input type="password" placeholder="01012500" [(ngModel)]="pass"></ion-input>
-=======
-  <h1 text-center>Content goes here</h1>
+  <ion-item>
+    <ion-label fixed>EmpID</ion-label>
+    <ion-input type="text" placeholder="1111" [(ngModel)]="id"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label fixed>Password</ion-label>
+    <ion-input type="password" placeholder="01012500" [(ngModel)]="pass"></ion-input>
+
+  </ion-item>
   <ion-list>
-    <ion-item *ngFor="let item of values" (click)="onSelect(item)" >
-      {{item.id}} {{item.title}}
->>>>>>> 78f7e8799b22298a47709e9766ee31e7b63c334b
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-datetime displayFormat="D/M/YYYY" [max]="maxDate" [(ngModel)]="myDate">
+      </ion-datetime>
     </ion-item>
-    
-    <ion-list>
+  </ion-list>
+  <button block padding (click)="checkTime(id,pass,myDate)">check time</button>
 
-      <ion-item>
-        <ion-label>Date</ion-label>
-        <ion-datetime displayFormat="D/M/YYYY" [max]="maxDate" [(ngModel)]="myDate">
-        </ion-datetime>
-      </ion-item>
-    </ion-list>
-    <button block padding (click)="checkTime(id,pass,myDate)">check time</button>
-    <ion-card *ngFor="let item of values" (click)="onClick(item)">
-      <ion-item>รหัสพนักงาน
-        <p>{{item.id}}</p>
-      </ion-item>
-      <ion-item>วันที่ทำการ
-        <p>{{item.date}}</p>
-      </ion-item>
-      
-      <ion-item>เวลาสแกน
-        <p>{{item.time}}</p>
-      </ion-item>
-      <ion-item>จุดสแกน
-        <p>{{item.location}}</p>
-      </ion-item>
-    </ion-card>
+  <ion-card *ngFor="let item of values" (click)="onClick(item)">
+    <ion-item>รหัสพนักงาน
+      <p>{{item.id}}</p>
+    </ion-item>
+    <ion-item>วันที่ทำการ
+      <p>{{item.date}}</p>
+    </ion-item>
 
+    <ion-item>เวลาสแกน
+      <p>{{item.time}}</p>
+    </ion-item>
+    <ion-item>จุดสแกน
+      <p>{{item.location}}</p>
+    </ion-item>
   </ion-card>
+
+
 
 </ion-content>
