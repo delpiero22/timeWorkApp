@@ -1,4 +1,5 @@
 import {Component} from "@angular/core";
+<<<<<<< HEAD
 import {Http, Headers, RequestOptions} from "@angular/http";
 import {NavController, Alert} from 'ionic-angular';
 // import * as moment from 'moment';
@@ -6,11 +7,16 @@ import {NavController, Alert} from 'ionic-angular';
 // import 'rxjs/Rx';
 
 
+=======
+import {Http} from "@angular/http";
+import {Alert, NavController} from 'ionic-angular';
+>>>>>>> 78f7e8799b22298a47709e9766ee31e7b63c334b
 
 @Component({
   templateUrl: 'build/pages/home/home.html'
 })
 export class HomePage {
+<<<<<<< HEAD
   private values;
   myDate: String = new Date().toISOString();
   // maxDate = moment.utc().add('y').format('YYYY-MM-DD');
@@ -54,9 +60,22 @@ export class HomePage {
       .subscribe(
       data => this.values = data,
       err => console.log("Error ==>", err)
+=======
+  private values: any;
+
+  constructor(private http: Http,
+    private nav: NavController) {
+    http.get("http://jsonplaceholder.typicode.com/posts")
+      .map(res => res.json())
+      .subscribe(
+        data => this.values = data,
+        err => this.onError(err),
+        () => console.log("Completed")
+>>>>>>> 78f7e8799b22298a47709e9766ee31e7b63c334b
       );
 
   }
+<<<<<<< HEAD
 
 
   // onClick(data: Data) {
@@ -70,4 +89,22 @@ export class HomePage {
   //     () => console.log("Completed")
   //     );
   
+=======
+  onError(err: Error) {
+    let alert = Alert.create({
+      title: "Error",
+      subTitle: err.message,
+      buttons: ['OK']
+    });
+    this.nav.present(alert);
+  }
+  onSelect(item) {
+    let alert = Alert.create({
+      title: item.title,
+      subTitle: item.body,
+      buttons: ['OK']
+    });
+    this.nav.present(alert);
+  }
+>>>>>>> 78f7e8799b22298a47709e9766ee31e7b63c334b
 }

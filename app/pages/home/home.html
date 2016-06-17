@@ -1,5 +1,6 @@
 
 <ion-content class="home">
+<<<<<<< HEAD
   <h1 text-center light>Time Work</h1>
   <ion-card>
 
@@ -11,6 +12,12 @@
     <ion-item>
       <ion-label fixed>Password</ion-label>
       <ion-input type="password" placeholder="01012500" [(ngModel)]="pass"></ion-input>
+=======
+  <h1 text-center>Content goes here</h1>
+  <ion-list>
+    <ion-item *ngFor="let item of values" (click)="onSelect(item)" >
+      {{item.id}} {{item.title}}
+>>>>>>> 78f7e8799b22298a47709e9766ee31e7b63c334b
     </ion-item>
     
     <ion-list>
