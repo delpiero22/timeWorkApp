@@ -1,54 +1,63 @@
 import {Component} from "@angular/core";
 import {Http, Headers, RequestOptions} from "@angular/http";
 import {NavController, Alert} from 'ionic-angular';
+// import * as moment from 'moment';
 // import {Observable} from 'rxjs/Observable';
 // import 'rxjs/Rx';
 
 
-interface Data {
-  id: number,
-  pass: string,
-  day: string,
-  month: string,
-  year: string,
-}
+
 @Component({
   templateUrl: 'build/pages/home/home.html'
 })
 export class HomePage {
   private values;
-  
-
+  myDate: String = new Date().toISOString();
+  // maxDate = moment.utc().add('y').format('YYYY-MM-DD');
 
   constructor(private http: Http, private nav: NavController) {
     console.log("Home Print")
-    
-    this.makePost
-    
+
+    this.checkTime
+
   }
-  onClick(data: Data) {
-  }
-  makePost(id,password,day,month,year){
-    let url = "http://127.0.0.1:8080/MobileAppRAOT/rest/TimeWorkService/timeWork";
-    let body = "id=3355&pass=22112532&day=8&month=6&year=2559";
-    let body1 = JSON.stringify({"id":id, "password": password,"day":day,"month":month,"year":year})
-    let headers = new Headers({ "Content-Type": "application/x-www-form-urlencoded" });
+
+
+
+  checkTime(id, pass,myDate) {
+    let dateObject = new Date(myDate);//1466054245200 (iso8061)
     
-    console.log(id);
+    let year = dateObject.getFullYear()+543;
+    let month = dateObject.getMonth()+1;
+    let day = dateObject.getDate();
     
-    // this.http.post(url,body1, headers)
-    //   .map(res => {
-    //     if (res.status == 200) {
-    //       return res.json();
-    //     } else {
-    //       return {};
-    //     }
-    //   })
-    //   .subscribe(
-    //   data => this.values = data,
-    //   err => console.log("Error ==>", err)
-    //   );
+         
+
+    const server = "http://10.11.11.87:8080";
+    const test = "http://127.0.0.1:8080";
+    const url = server + "/MobileAppRAOT/rest/TimeWorkService/timeWork";
+    let bodyTest = "id=3355&pass=22112532&day=8&month=6&year=2559";
+    let body = 'id=' + id + '&pass=' + pass + '&day=' +day+ '&month=' +month+ '&year=' +year;
+    let headers = new Headers();//({ "Content-Type": "application/x-www-form-urlencoded:charset=utf8" });
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    let options = new RequestOptions({ headers: headers });
+    console.log(body);//print post body
+    
+    this.http.post(url,body,{headers:headers})
+      .map(res => {
+        if (res.status == 200) {
+          return res.json();
+        } else {
+          return {};
+        }
+      })
+      .subscribe(
+      data => this.values = data,
+      err => console.log("Error ==>", err)
+      );
+
   }
+
 
   // onClick(data: Data) {
   //   console.log(data);
@@ -60,26 +69,5 @@ export class HomePage {
   //     err => console.log(err),
   //     () => console.log("Completed")
   //     );
-  // }
-  // submit(){
-  //   let url = "http://10.11.11.87:8080/MobileAppRAOT/rest/TimeWorkService/timeWork";
-  //   let body = JSON.stringify({id:this.data.id});
-  //   let headers = new Headers({'Content-Type':'application/json' });
-  //   let options = new RequestOptions({headers:headers});
-  //   return this.http.post(url,body,options)
-  //   .map(res=>res.json())
-  //   .catch(this.handleError);
-
-
-  // }
-  // handleError(error){
-  //   console.error(error);
-  //   return Observation.throw(error.json().error||'Server error')
-  // }
-
-  /*
-    pushPage(){
-      this._navController.push(SomeImportedPage, { userId: "12345"});
-    }
-  */
+  
 }

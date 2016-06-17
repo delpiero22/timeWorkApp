@@ -1,43 +1,27 @@
-<ion-navbar *navbar>
-  <ion-title text-center light>
-    Home
-  </ion-title>
-</ion-navbar>
+
 <ion-content class="home">
-  <h1 text-center light>Check Time</h1>
+  <h1 text-center light>Time Work</h1>
   <ion-card>
 
     <ion-item>
-      <ion-label>ID</ion-label>
+      <ion-label fixed>EmpID</ion-label>
       <ion-input type="text" placeholder="1111" [(ngModel)]="id"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>Password</ion-label>
-      <ion-input type="password" placeholder="01012550" [(ngModel)]="password"></ion-input>
+      <ion-label fixed>Password</ion-label>
+      <ion-input type="password" placeholder="01012500" [(ngModel)]="pass"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label>day</ion-label>
-      <ion-input type="text" placeholder="8" [(ngModel)]="day"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>month</ion-label>
-      <ion-input type="text" placeholder="6" [(ngModel)]="month"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>year</ion-label>
-      <ion-input type="text" placeholder="2559" [(ngModel)]="year"></ion-input>
-    </ion-item>
-
+    
     <ion-list>
 
       <ion-item>
         <ion-label>Date</ion-label>
-        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate">
+        <ion-datetime displayFormat="D/M/YYYY" [max]="maxDate" [(ngModel)]="myDate">
         </ion-datetime>
       </ion-item>
     </ion-list>
-    <button block padding (click)="makePost()">check time</button>
+    <button block padding (click)="checkTime(id,pass,myDate)">check time</button>
     <ion-card *ngFor="let item of values" (click)="onClick(item)">
       <ion-item>รหัสพนักงาน
         <p>{{item.id}}</p>
