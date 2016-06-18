@@ -8,7 +8,7 @@ time work app for RAOT develop by ionic2
 
 ## ก่อนใช้งาน
 ```
-npm install -g ionic@beta typings cordova
+npm install -g ionic@beta typings cordova ts-node
 ```
 
 ## การติดตั้ง
@@ -18,5 +18,15 @@ npm install
 
 ## เวลาพัฒนา
 ```
-ionic serv
+npm run dev
+```
+
+## Run
+### ionic
+```
+ionic serve
+```
+### Server
+```
+npm run server
 ```
