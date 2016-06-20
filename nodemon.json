@@ -5,6 +5,10 @@
     "node_modules/**/node_modules"
   ],
   "verbose": true,
+  "execMap": {
+    "js": "node",
+	"ts": "ts-node"
+  },
   "events": {
     "restart": ""
   },

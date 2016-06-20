@@ -36,7 +36,7 @@
   "scripts": {
     "dev": "concurrently --kill-others \"npm run ionic\" \"npm run server\"",
     "ionic": "ionic serve",
-    "server": "nodemon server/index.js"
+    "server": "nodemon server/index.ts"
   },
   "cordovaPlugins": [
     "cordova-plugin-device",
