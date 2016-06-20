@@ -8,6 +8,7 @@
     "express-serve-static-core": "registry:dt/express-serve-static-core#0.0.0+20160602151406",
     "mime": "registry:dt/mime#0.0.0+20160316155526",
     "moment": "registry:dt/moment#2.8.0+20160316155526",
+    "moment-node": "registry:dt/moment-node#2.11.1+20160511043338",
     "node": "registry:dt/node#6.0.0+20160613154055",
     "serve-static": "registry:dt/serve-static#0.0.0+20160606155157"
   },
