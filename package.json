@@ -29,13 +29,15 @@
     "ionic-gulp-scripts-copy": "^2.0.0",
     "nodemon": "^1.9.2",
     "run-sequence": "1.1.5",
-    "ts-node": "^0.9.1"
+    "ts-node": "^0.9.1",
+    "tslint": "^3.11.0"
   },
   "name": "angular2",
   "description": "angular2: An Ionic project",
   "scripts": {
     "dev": "concurrently --kill-others \"npm run ionic\" \"npm run server\"",
     "ionic": "ionic serve",
+    "android": "ionic run android",
     "server": "nodemon server/index.ts"
   },
   "cordovaPlugins": [
