@@ -1,23 +1,24 @@
-import {Component} from "@angular/core";
+import {Component, OnInit } from "@angular/core";
 import {Http, Headers, RequestOptions} from "@angular/http";
 import {NavController, Alert} from 'ionic-angular';
 import config from "./../../config.ts";
 import * as moment from 'moment';
 import 'rxjs/Rx';
+import {HomeService} from "./home.service";
+import {TimeWork} from "./home.model"
+
 
 @Component({
+  providers: [HomeService],
   templateUrl: 'build/pages/home/home.html'
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
-  private values;
-  myDate: String = new Date().toISOString();
-  // maxDate = moment.utc().add('y').format('YYYY-MM-DD');
+  private values: TimeWork[];
 
-  constructor(private _http: Http, private _nav: NavController) {
-    console.log("Home Print")
+  constructor(private homeService: HomeService, private _nav: NavController) { }
 
-    this.checkTime
+  ngOnInit() {
 
   }
   checkTime(id, pass, myDate) {
@@ -29,22 +30,8 @@ export class HomePage {
 
 
 
-    let body = 'id=' + id + '&pass=' + pass + '&day=' + day + '&month=' + month + '&year=' + year;
-    let headers = new Headers();//({ "Content-Type": "application/x-www-form-urlencoded:charset=utf8" });
-    headers.append('Content-Type', 'application/x-www-form-urlencoded');
-
-    this._http.post(config.developServer + "/MobileAppRAOT/rest/TimeWorkService/timeWork", body, { headers: headers })
-
-      .map(res => {
-        if (res.status == 200) {
-          return res.json();
-        } else {
-          return {};
-        }
-      })
-      .subscribe(
-      data => this.values = data,
-      err => console.log(JSON.stringify(err))
-      );
+    this.homeService.callTimeWork(id, pass, day, month, year)
+        .then(data => this.values = data)
+        .catch(err => console.log(JSON.stringify(err)))
   };
 }
