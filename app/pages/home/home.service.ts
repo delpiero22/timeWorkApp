@@ -16,7 +16,10 @@ export class HomeService {
 
         return this._http
             .post(config.server + "/MobileAppRAOT/rest/TimeWorkService/timeWork", body, { headers: headers })
-            .map(res => res.json())
+            .map(res => {
+                console.log(res.json());
+                return res.json()
+            })
             .toPromise()
     }
 }
