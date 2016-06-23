@@ -1,5 +1,15 @@
-<ion-navbar *navbar hideBackButton>
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+
   <ion-title>ค้นหาเวลงาน</ion-title>
+
+  <ion-buttons end>
+    <button >
+      <ion-icon name="ios-funnel-outline"></ion-icon>
+    </button>
+  </ion-buttons>
 </ion-navbar>
 
 <ion-content padding>
@@ -20,6 +30,7 @@
     </ion-datetime>
   </ion-item>
 
-  <button block padding (click)="onTimeworkSearch(empId, password, date)">ค้นหา</button>
+  <button block (click)="onTimeworkSearchClick(empId, password, date)">ค้นหา</button>
+
 
 </ion-content>
