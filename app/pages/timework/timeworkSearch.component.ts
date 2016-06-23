@@ -1,15 +1,18 @@
 import {Component} from "@angular/core";
 import {NavController} from "ionic-angular";
 
-import {TimeWorkResult} from "./timeworkResult.component"
+import {TimeWorkResultPage} from "./timeworkResult.component"
 
 @Component({
   templateUrl: 'build/pages/timework/timeworkSearch.html'
 })
-export class TimeWorkSearch {
-  constructor(private _nav: NavController) { }
-  onTimeworkSearch(empId, password, dateString) {
+export class TimeWorkSearchPage {
+  constructor(private _nav: NavController) {
+
+  }
+
+  onTimeworkSearchClick(empId, password, dateString) {
     const date = (dateString === true ? new Date(dateString) : undefined);
-    this._nav.push(TimeWorkResult, { query: { empId, password, date } })
+    this._nav.push(TimeWorkResultPage, { query: { empId, password, date } })
   }
 }

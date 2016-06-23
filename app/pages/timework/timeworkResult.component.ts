@@ -13,7 +13,7 @@ interface Query {
   providers: [AppService],
   templateUrl: 'build/pages/timework/timeworkResult.html'
 })
-export class TimeWorkResult implements AfterViewInit, OnInit {
+export class TimeWorkResultPage implements AfterViewInit, OnInit {
   private query: Query;
   private timeworks: TimeWork[];
   private loading: Loading;
@@ -36,13 +36,13 @@ export class TimeWorkResult implements AfterViewInit, OnInit {
     this._appService
       .find(empId, password, date)
       .then(data => {
-        this.loading.dismiss();
         this.timeworks = data;
+        this.loading.dismiss();
         console.log(JSON.stringify(data));
       })
       .catch(err => {
-        this.loading.dismiss();
         console.log(JSON.stringify(err))
+        this.loading.dismiss();
       });
   }
   onSelectResult() { }
