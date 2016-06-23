@@ -1,0 +1,21 @@
+<ion-navbar *navbar>
+  <ion-title>ผลการค้นหา</ion-title>
+</ion-navbar>
+
+<ion-content padding>
+  <ion-card *ngFor="let item of timeworks">
+    <ion-item>รหัสพนักงาน
+      <p>{{item.id}}</p>
+    </ion-item>
+    <ion-item>วันที่ทำการ
+      <p>{{item.date}}</p>
+    </ion-item>
+
+    <ion-item>เวลาสแกน
+      <p>{{item.time}}</p>
+    </ion-item>
+    <ion-item>จุดสแกน
+      <p>{{item.location}}</p>
+    </ion-item>
+  </ion-card>
+</ion-content>

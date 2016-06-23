@@ -1,0 +1,25 @@
+<ion-navbar *navbar hideBackButton>
+  <ion-title>ค้นหาเวลงาน</ion-title>
+</ion-navbar>
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label fixed>รหัสพนักงาน</ion-label>
+    <ion-input type="text" placeholder="1111" [(ngModel)]="empId"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label fixed>รหัสผ่าน</ion-label>
+    <ion-input type="password" placeholder="01012500" [(ngModel)]="password"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>วันที่</ion-label>
+    <ion-datetime displayFormat="DD/MM/YYYY" [max]="maxDate" [(ngModel)]="date">
+    </ion-datetime>
+  </ion-item>
+
+  <button block padding (click)="onTimeworkSearch(empId, password, date)">ค้นหา</button>
+
+</ion-content>
