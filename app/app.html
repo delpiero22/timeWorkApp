@@ -1,0 +1,43 @@
+<ion-menu [content]="content">
+
+    <ion-toolbar>
+        <ion-item style="color: #fff; text-rendering: optimizelegibility;text-shadow: 0 0 3px rgba(0,0,0,.6);background-color:#cfcfcf;" [ngStyle]="{'background-image': 'url(' + user.cover + ')'}">
+            <ion-avatar item-left>
+                <img src="{{user.avatar}}">
+            </ion-avatar>
+            <h2>{{user.name}}</h2>
+            <h5>{{user.email}}</h5>
+        </ion-item>
+    </ion-toolbar>
+
+    <ion-content>
+        <ion-list>
+            <ion-item menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+                <ion-icon name="{{p.icon}}" item-left></ion-icon>
+                {{p.title}}
+            </ion-item>
+
+
+            <ion-list-header>ช่วยเหลือ</ion-list-header>
+            <ion-item>
+                <ion-icon name="ios-alert-outline" item-left></ion-icon>
+                ประกาศ ข่าวสาร
+                <ion-badge item-right>2</ion-badge>
+            </ion-item>
+
+            <ion-item>
+                <ion-icon name="ios-contacts-outline" item-left></ion-icon>
+                ติดต่อเจ้าหน้าที่
+            </ion-item>
+
+            <ion-item>
+                <ion-icon name="ios-information-circle-outline" item-left></ion-icon>
+                เกี่ยวกับ
+            </ion-item>
+        </ion-list>
+    </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
