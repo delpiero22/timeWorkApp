@@ -6,6 +6,7 @@
     "es6-shim": "registry:dt/es6-shim#0.31.2+20160602141504",
     "express": "registry:dt/express#4.0.0+20160317120654",
     "express-serve-static-core": "registry:dt/express-serve-static-core#0.0.0+20160602151406",
+    "faker": "registry:dt/faker#0.0.0+20160406111603",
     "mime": "registry:dt/mime#0.0.0+20160316155526",
     "moment": "registry:dt/moment#2.8.0+20160316155526",
     "moment-node": "registry:dt/moment-node#2.11.1+20160511043338",
@@ -14,6 +15,7 @@
   },
   "globalDevDependencies": {
     "body-parser": "registry:dt/body-parser#0.0.0+20160317120654",
-    "express": "registry:dt/express#4.0.0+20160317120654"
+    "express": "registry:dt/express#4.0.0+20160317120654",
+    "faker": "registry:dt/faker#0.0.0+20160406111603"
   }
 }
