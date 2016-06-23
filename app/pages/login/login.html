@@ -1,0 +1,31 @@
+<ion-navbar *navbar>
+    <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+    <ion-title>ล็อกอินเข้าระบบ</ion-title>
+</ion-navbar>
+
+
+<ion-content padding>
+    <h1 class="align-center large-bottom-margin vlarge-top-margin">ล็อกอินเข้าระบบ</h1>
+
+    <ion-item>
+        <ion-label stacked>รหัสพนักงาน</ion-label>
+        <ion-input type="text" placeholder="1111" [(ngModel)]="login.empId"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label stacked>รหัสผ่าน</ion-label>
+        <ion-input type="password" placeholder="01012500" [(ngModel)]="login.password"></ion-input>
+    </ion-item>
+
+    <button block class="large-top-margin left-margin" (click)="onLoginClick()">
+        <ion-icon name="log-in"></ion-icon>ล็อกอิน
+    </button>
+
+
+    <p class="align-center vlarge-top-margin">
+        หากไม่สามารถเข้าสู่ระบบได้ กรุณาติดต่อเจ้าหน้าที่
+    </p>
+
+</ion-content>
