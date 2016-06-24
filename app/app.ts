@@ -1,7 +1,7 @@
 import { Component, ViewChild } from "@angular/core";
 import { App, ionicBootstrap, Platform, Nav, Events } from "ionic-angular";
 import { StatusBar } from "ionic-native";
-import { Observable } from "rxjs";
+import "moment/locale/th";
 
 import { Page1 } from "./pages/page1/page1";
 import { Page2 } from "./pages/page2/page2";
@@ -10,7 +10,8 @@ import {LoginPage} from "./pages/login/login.component";
 import {HomePage} from "./pages/home/home.component";
 import {TimeWorkSearchPage} from "./pages/timework/timeworkSearch.component";
 
-import {GlobalVars, User} from "./services/globalVars";
+import {GlobalVars} from "./services/globalVars";
+import {User} from "./app.models";
 
 interface Page {
   alias: string;
@@ -35,6 +36,7 @@ class MyApp {
   constructor(private platform: Platform,
     private events: Events,
     private globalVars: GlobalVars) {
+  
     this.initializeApp();
     this.loadUser();
     this.loadPages();
@@ -42,6 +44,7 @@ class MyApp {
   }
 
   initializeApp() {
+    this.platform.setLang("th", true);
     this.platform.ready().then(() => {
       StatusBar.styleDefault();
     });
