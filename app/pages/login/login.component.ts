@@ -1,25 +1,78 @@
 import {Component} from "@angular/core";
-import {Events} from "ionic-angular";
+import {Events, NavController, Toast} from "ionic-angular";
+import {
+    FormBuilder,
+    Validators,
+    Control,
+    ControlGroup,
+    FORM_DIRECTIVES
+} from '@angular/common';
 
-import * as faker from "faker";
+import {AppService} from "./../../app.service";
 
 @Component({
-    templateUrl: "build/pages/login/login.html"
+    templateUrl: "build/pages/login/login.html",
+    providers: [AppService],
+    directives: [FORM_DIRECTIVES]
 })
 export class LoginPage {
-    private login: { empId?: string, password?: string } = {};
+    private loginForm: ControlGroup;
+    private empId: Control;
+    private password: Control;
 
-    constructor(private _events: Events) { }
+    constructor(
+        private _events: Events,
+        private _formBuilder: FormBuilder,
+        private _appService: AppService,
+        private _nav: NavController) {
 
-    onLoginClick() {
-       
-        const user = {
-            avatar: faker.internet.avatar(),
-            name: faker.name.firstName() + " " + faker.name.lastName(),
-            email: faker.internet.email(),
-            cover: faker.image.abstract(300,60)
-        };
-        console.log(user);
-        this._events.publish("user:login", user);
+        this.empId = new Control("100001", Validators.compose([
+            Validators.required,
+            Validators.minLength(4),
+            Validators.maxLength(6)
+        ]));
+        this.password = new Control("pass", Validators.compose([
+            Validators.required,
+            Validators.minLength(4),
+            Validators.maxLength(12)
+        ]));
+
+        this.loginForm = _formBuilder.group({
+            "empId": this.empId,
+            "password": this.password
+        })
+    }
+
+    onSubmit(formData) {
+        this._appService
+            .userLogin(Number.parseInt(formData.empId), formData.password)
+            .then(result => {
+                console.log(result);
+
+                if (result.error) {
+                    if (result.error.name === "IdOrPassInvalidExcention") {
+                        this.showLoginFailure("ไม่พบผู้ใช้งาน");
+                    }
+
+                    if (result.error.name === "UserNotFountException") {
+                        this.showLoginFailure("ไม่พบผู้ใช้งาน");
+                    }
+                    return;
+                }
+
+                this._events.publish("user:login", result.data);
+            })
+            .catch(err => {
+                console.log(err);
+                this.showLoginFailure("ไม่สามารถเชื่อมต่อเซิฟเวอร์, กรุณาลองใหม่อีกครั้ง")
+            });
+    }
+
+    showLoginFailure(message: string) {
+        let toast = Toast.create({
+            message: message,
+            duration: 3000
+        });
+        this._nav.present(toast);
     }
 }

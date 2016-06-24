@@ -9,23 +9,35 @@
 <ion-content padding>
     <h1 class="align-center large-bottom-margin vlarge-top-margin">ล็อกอินเข้าระบบ</h1>
 
-    <ion-item>
-        <ion-label stacked>รหัสพนักงาน</ion-label>
-        <ion-input type="text" placeholder="1111" [(ngModel)]="login.empId"></ion-input>
-    </ion-item>
+    <form [ngFormModel]="loginForm" (ngSubmit)="onSubmit(loginForm.value)" autocomplete="off">
+        <ion-item>
+            <ion-label stacked>รหัสพนักงาน</ion-label>
+            <ion-input type="text" ngControl="empId"></ion-input>
+        </ion-item>
 
-    <ion-item>
-        <ion-label stacked>รหัสผ่าน</ion-label>
-        <ion-input type="password" placeholder="01012500" [(ngModel)]="login.password"></ion-input>
-    </ion-item>
+        <div padding class="no-top-padding" *ngIf="!empId.valid && empId.touched">
+            <small *ngIf="empId.errors.required" danger>จำเป็น</small>
+            <small *ngIf="empId.errors.minlength || empId.errors.maxlength" danger>ความยาว 4-6 ตัวอักษร</small>
+        </div>
 
-    <button block class="large-top-margin left-margin" (click)="onLoginClick()">
-        <ion-icon name="log-in"></ion-icon>ล็อกอิน
-    </button>
+        <ion-item>
+            <ion-label stacked>รหัสผ่าน</ion-label>
+            <ion-input type="password" ngControl="password"></ion-input>
+        </ion-item>
+
+        <div padding class="no-top-padding" *ngIf="!password.valid && password.touched">
+            <small *ngIf="password.errors.required" danger>จำเป็น</small>
+            <small *ngIf="password.errors.minlength || password.errors.maxlength" danger>ความยาว 4-12 ตัวอักษร</small>
+        </div>
+
+        <button [disabled]="!loginForm.valid" block class="vlarge-top-margin left-margin">
+            <ion-icon name="log-in"></ion-icon>ล็อกอิน
+        </button>
+    </form>
 
 
     <p class="align-center vlarge-top-margin">
-        หากไม่สามารถเข้าสู่ระบบได้ กรุณาติดต่อเจ้าหน้าที่
+        หากลืมรหัสผ่าน กรุณาติดต่อเจ้าหน้าที่
     </p>
 
 </ion-content>
