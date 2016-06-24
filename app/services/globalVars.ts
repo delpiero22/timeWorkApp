@@ -1,12 +1,5 @@
 import {Injectable} from "@angular/core";
-
-export interface User {
-  avatar: string;
-  name: string;
-  email: string;
-  auth?: boolean;
-  cover?: string
-}
+import {User} from "./../app.models";
 
 @Injectable()
 export class GlobalVars {
