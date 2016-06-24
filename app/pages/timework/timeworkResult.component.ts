@@ -1,10 +1,9 @@
 import {Component, AfterViewInit, OnInit } from "@angular/core";
 import {Loading, NavController, NavParams} from "ionic-angular";
 import {AppService} from "./../../app.service";
-import {TimeWork} from "./../../app.models";
 
 interface Query {
-  empId?: string;
+  empId?: number;
   password?: string;
   date?: Date;
 }
@@ -15,7 +14,7 @@ interface Query {
 })
 export class TimeWorkResultPage implements AfterViewInit, OnInit {
   private query: Query;
-  private timeworks: TimeWork[];
+  private timeworks;
   private loading: Loading;
 
   constructor(
@@ -28,22 +27,22 @@ export class TimeWorkResultPage implements AfterViewInit, OnInit {
       dismissOnPageChange: true
     });
   }
-  ngOnInit(){}
+  ngOnInit() { }
   ngAfterViewInit() {
     const {empId, password, date} = this.query;
-    
+
     this._nav.present(this.loading);
-    this._appService
-      .find(empId, password, date)
-      .then(data => {
-        this.timeworks = data;
-        this.loading.dismiss();
-        console.log(JSON.stringify(data));
-      })
-      .catch(err => {
-        console.log(JSON.stringify(err))
-        this.loading.dismiss();
-      });
+    // this._appService
+    //   .find(empId, password, date)
+    //   .then(data => {
+    //     this.timeworks = data;
+    //     this.loading.dismiss();
+    //     console.log(JSON.stringify(data));
+    //   })
+    //   .catch(err => {
+    //     console.log(JSON.stringify(err))
+    //     this.loading.dismiss();
+    //   });
   }
   onSelectResult() { }
 }
