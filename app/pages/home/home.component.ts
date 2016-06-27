@@ -13,7 +13,7 @@ import {TimeWork} from "./home.model"
   templateUrl: 'build/pages/home/home.html'
 })
 export class HomePage implements OnInit {
-
+  myDate = new Date().toISOString();
   private values: TimeWork[];
 
   constructor(private homeService: HomeService, private _nav: NavController) { }
